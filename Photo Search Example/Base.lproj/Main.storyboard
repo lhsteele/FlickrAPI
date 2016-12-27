@@ -21,19 +21,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ER5-xB-dcm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KP9-aT-euU">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ER5-xB-dcm">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                    </scrollView>
+                                </subviews>
+                            </stackView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4jn-Ij-Yk1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="QcA-C2-Dqe"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="meN-0o-Rz3"/>
                                 </connections>
-                            </scrollView>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ER5-xB-dcm" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="98g-C7-QyH"/>
-                            <constraint firstAttribute="trailing" secondItem="ER5-xB-dcm" secondAttribute="trailing" id="Q5Z-XO-561"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ER5-xB-dcm" secondAttribute="bottom" id="ca8-Mz-aLR"/>
-                            <constraint firstItem="ER5-xB-dcm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="odl-0D-eRQ"/>
+                            <constraint firstItem="4jn-Ij-Yk1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JOY-g6-3vP"/>
+                            <constraint firstItem="KP9-aT-euU" firstAttribute="top" secondItem="4jn-Ij-Yk1" secondAttribute="bottom" id="Pg0-aU-UyT"/>
+                            <constraint firstItem="KP9-aT-euU" firstAttribute="trailing" secondItem="4jn-Ij-Yk1" secondAttribute="trailing" id="XVc-Qb-nJX"/>
+                            <constraint firstItem="KP9-aT-euU" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="aVZ-qN-zrT"/>
+                            <constraint firstItem="4jn-Ij-Yk1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-262" id="cpE-EH-PiU"/>
+                            <constraint firstAttribute="trailing" secondItem="4jn-Ij-Yk1" secondAttribute="trailing" id="hbZ-fa-Fsc"/>
+                            <constraint firstItem="KP9-aT-euU" firstAttribute="leading" secondItem="4jn-Ij-Yk1" secondAttribute="leading" id="m1q-8w-Bos"/>
                         </constraints>
                     </view>
                     <connections>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
    
@@ -106,6 +106,17 @@ class ViewController: UIViewController {
                                                 if let url = URL(string: imageURLString) {
                                                     imageView.setImageWith(url)
                                                     self.scrollView.addSubview(imageView)
+                                                    
+                                                    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+                                                        for subview in self.scrollView.subviews {
+                                                            subview.removeFromSuperview()
+                                                            searchBar.resignFirstResponder()
+                                                            
+                                                        }
+                                                        
+                                                    }
+
+                                                    
                                                 }
                                             
                                             }
@@ -119,14 +130,15 @@ class ViewController: UIViewController {
  
                         
                         }
- 
- 
+                        
+                        
         }) { (operation: URLSessionDataTask?, error: Error) in
             print ("Error: " + error.localizedDescription)
         
         }
-                        
-                   
+        
+        
+        
         
 }
 }
@@ -136,7 +148,7 @@ class ViewController: UIViewController {
 
 
               // Do any additional setup after loading the view, typically from a nib.
- 
+
 
  /*
     override func didReceiveMemoryWarning() {
