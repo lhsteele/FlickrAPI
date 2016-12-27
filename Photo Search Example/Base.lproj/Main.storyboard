@@ -36,6 +36,9 @@
                             <constraint firstItem="ER5-xB-dcm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="odl-0D-eRQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="ER5-xB-dcm" id="R1N-lM-H4a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
