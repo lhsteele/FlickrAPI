@@ -12,38 +12,31 @@ class ViewController: UIViewController,UISearchBarDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        for subview in self.scrollView.subviews {
-            subview.removeFromSuperview()
-            
-        }
-        searchBar.resignFirstResponder()
+    override func viewDidLoad() {
+    super.viewDidLoad()
+    searchFlickrBy("dogs")
         
     }
-
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func searchFlickrBy(_ searchString: String) {
         
-        
+    
         let manager = AFHTTPSessionManager()
         
         let searchParameters:[String: Any] = ["method": "flickr.photos.search",
                                               "api_key":  "9ab3bfcbb45d33d191797f08257e6651",
                                               "format": "json",
                                               "nojsoncallback": 1,
-                                              "text": "dogs",
+                                              "text": searchString,
                                               "extras": "url_m",
                                               "per_page": 5]
         manager.get("https://api.flickr.com/services/rest/",
                     parameters: searchParameters,
                     progress: nil,
                     success: { (operation: URLSessionDataTask, responseObject: Any?) in
-                        if let responseObject = responseObject as? [String: AnyObject] {
-                            
-                            
-                              if let photos = responseObject["photos"] as? [String: AnyObject] {
+                        if let responseObject = responseObject {
+                            print("Response: " + (responseObject as AnyObject).description)
+                                if let photos = (responseObject as AnyObject)["photos"] as? [String: AnyObject] {
                                 if let photoArray = photos["photo"] as? [[String: AnyObject]] {
                                     
                                     self.scrollView.contentSize = CGSize(width: 320, height: 320 * CGFloat(photoArray.count))
@@ -66,22 +59,28 @@ class ViewController: UIViewController,UISearchBarDelegate {
 
                                 }
                        
-                            }
- 
- 
-                        
                         }
-                        
-                        
+                        }
+    
         }) { (operation: URLSessionDataTask?, error: Error) in
             print ("Error: " + error.localizedDescription)
         
         }
         
-        
-        
     }
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.delegate = self
+        for subview in self.scrollView.subviews {
+            subview.removeFromSuperview()
+            
+        }
+        searchBar.resignFirstResponder()
+        if let searchText = searchBar.text {
+            searchFlickrBy(searchText)
+        }
+    }
 }
+    
+
 
 
